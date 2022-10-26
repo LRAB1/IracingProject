@@ -61,13 +61,27 @@
 <form
     action=""
     method="post">
-    <input type="text" name="name"><br>
+    <input type="text" name="name" value="<?php
+        echo htmlspecialchars($name, ENT_QUOTES);
+    ?>"><br>
     Username: <input type="text"name="name"><br>
     Password: <input type="password" name="password"><br>
     Gender:
-        <input type="radio" name="gender" value="f"> Female
-        <input type="radio" name="gender" value="m"> Male
-        <input type="radio" name="gender" value="o"> Other<br>
+        <input type="radio" name="gender" value="f"<?php 
+            if ($gender === 'f') {
+                echo  'checked';
+            }
+        ?>> Female
+        <input type="radio" name="gender" value="m"<?php 
+            if ($gender === 'm') {
+                echo  'checked';
+            }
+        ?>> Male
+        <input type="radio" name="gender" value="o"<?php 
+            if ($gender === 'o') {
+                echo  'checked';
+            }
+        ?>> Other<br>
     Favorite color:
         <select name="color">
             <option value="">Please select</option>
@@ -81,8 +95,14 @@
         <option value="fr">French</option>
         <option value="DE">German</option>
 </select><br>
-Comments: <textarea name="comments"></textarea><br>
-    <input type="checkbox" name="tc" value="ok">
+Comments: <textarea name="comments"><?php 
+    echo htmlspecialchars($comments, ENT_QUOTES);
+?></textarea><br>
+    <input type="checkbox" name="tc" value="ok"<?php
+        if ($tc === 'ok') {
+            echo ' checked';
+        }
+    ?>>
     I accept the T&amp;C<br>
     <input type="submit" name="submit" vale="submit">
 </form>
