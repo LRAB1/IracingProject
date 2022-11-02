@@ -21,7 +21,7 @@
         if ($ok) {
             //database go brrrrrr
             $db = new mysqli (
-                '127.0.0.1:8080',
+                'localhost:3306',
                 'root',
                 'Xf@82vosD&aB',
                 'php');
@@ -40,9 +40,6 @@
 <form
     action=""
     method="post">
-    <input type="text" name="name" value="<?php
-        echo htmlspecialchars($name, ENT_QUOTES);
-    ?>"><br>
     Username: <input type="text"name="name"><br>
     Gender:
         <input type="radio" name="gender" value="f"<?php 
@@ -79,4 +76,5 @@
             }
             ?>
 </select><br>
+<input type="submit" name="submit" vale="Register">
 </form>
