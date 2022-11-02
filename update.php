@@ -39,11 +39,7 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
         echo '<p>User updated.</p>';
         $db->close();
         } else {
-        $db = new mysqli (
-            'localhost:3306',
-            'root',
-            'Xf@82vosD&aB',
-            'php');
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
             $sql = "SELECT * FROM users WHERE id=$id";
             $result = $db->query($sql);
             foreach ($result as $row) {
