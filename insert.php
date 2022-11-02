@@ -1,7 +1,7 @@
 <?php
     $name = '';
     $gender = '';
-    $color = '';
+    $color = '';    
 
     if (isset($_POST['submit'])) {
         $ok = true;

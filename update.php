@@ -10,7 +10,7 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $gender = '';
     $color = '';
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) 
         $ok = true;
 
         if (!isset($_POST['name']) || $_POST['name'] === '') {
