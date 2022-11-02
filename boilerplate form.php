@@ -85,15 +85,39 @@
     Favorite color:
         <select name="color">
             <option value="">Please select</option>
-            <option value="#f00">Red</option>
-            <option value="#0f0">Green</option>
-            <option value="#00f">Blue</option>
+            <option value="#f00">Red</option><?php
+            if ($color === '#f00' ) {
+                echo ' selected';
+            }
+            ?>
+            <option value="#0f0">Green</option><?php
+            if ($color === '#0f0' ) {
+                echo ' selected';
+            }
+            ?>
+            <option value="#00f">Blue</option><?php
+            if ($color === '#00f' ) {
+                echo ' selected';
+            }
+            ?>
 </select><br>
     Languages spoken:
     <select name="Languages[]" multiple size="3">
-        <option value="EN">English</option>
-        <option value="FR">French</option>
-        <option value="DE">German</option>
+        <option value="EN"><?php
+            if (in_array('en', $languages)) {
+                echo ' selected';
+            }
+        ?>English</option>
+        <option value="FR"><?php
+            if (in_array('fr', $languages)) {
+                echo ' selected';
+            }
+        ?>French</option>
+        <option value="DE"><?php
+            if (in_array('de', $languages)) {
+                echo ' selected';
+            }
+        ?>German</option>
 </select><br>
 Comments: <textarea name="comments"><?php 
     echo htmlspecialchars($comments, ENT_QUOTES);
