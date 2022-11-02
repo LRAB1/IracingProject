@@ -91,8 +91,8 @@
 </select><br>
     Languages spoken:
     <select name="Languages[]" multiple size="3">
-        <option value="en">English</option>
-        <option value="fr">French</option>
+        <option value="EN">English</option>
+        <option value="FR">French</option>
         <option value="DE">German</option>
 </select><br>
 Comments: <textarea name="comments"><?php 
