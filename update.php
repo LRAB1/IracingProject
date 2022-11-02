@@ -1,4 +1,5 @@
 <?php
+require 'config.inc.php';
 //update.php?id=2
 if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = $_GET['id'];
@@ -27,11 +28,7 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
         };
         if ($ok) {
             //database go brrrrrr
-            $db = new mysqli (
-                'localhost:3306',
-                'root',
-                'Xf@82vosD&aB',
-                'php');
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
             $sql = sprintf(
                 "UPDATE users SET name='%s', gender ='%s', color='%s' WHERE id=%s",
             $db->real_escape_string($name),

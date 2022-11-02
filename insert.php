@@ -1,4 +1,7 @@
 <?php
+
+    require 'config.inc.php';
+
     $name = '';
     $gender = '';
     $color = '';    
@@ -20,11 +23,7 @@
         };
         if ($ok) {
             //database go brrrrrr
-            $db = new mysqli (
-                'localhost:3306',
-                'root',
-                'Xf@82vosD&aB',
-                'php');
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
             $sql = sprintf(
                 "INSERT INTO users (name, gender, color) VALUES ('%s', '%s', '%s')",
             $db->real_escape_string($name),

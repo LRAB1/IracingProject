@@ -6,11 +6,11 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     header('Location: select.php');
 }
 
-$db = new mysqli (
-    'localhost:3306',
-    'root',
-    'Xf@82vosD&aB',
-    'php');
+require 'config.inc.php';
+
+
+
+$db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
 $sql = "DELETE FROM users WHERE id=$id";
 $db->query($sql);
 echo '<p>User deleted.</p>';
