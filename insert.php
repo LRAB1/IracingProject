@@ -28,13 +28,15 @@
         };
         if ($ok) {
             //database go brrrrrr
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
             $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
             $sql = sprintf(
-                "INSERT INTO users (name, gender, color, password) VALUES ('%s', '%s', '%s', '%s')",
+                "INSERT INTO users (name, gender, color, hash) VALUES ('%s', '%s', '%s', '%s')",
             $db->real_escape_string($name),
             $db->real_escape_string($gender),
             $db->real_escape_string($color),
-            $db->real_escape_string($password));
+            $db->real_escape_string($hash));
         $db->query($sql);
         echo '<p>User added.</p>';
         $db->close();
@@ -46,7 +48,7 @@
     action=""
     method="post">
     Username: <input type="text"name="name"><br>
-    Password: <input type="text"name="password"><br>
+    Password: <input type="password"name="password"><br>
     Gender:
         <input type="radio" name="gender" value="f"<?php 
             if ($gender === 'f') {
@@ -80,7 +82,18 @@
             if ($color === '#00f' ) {
                 echo ' selected';
             }
+
+            if (isset($_POST['update'])) {
+                header('Location: update.php');
+            }    
+
+            if (isset($_POST['home'])) {
+                header('Location: dev index.php');
+            }    
+
             ?>
 </select><br>
-<input type="submit" name="submit" vale="Register">
+<input type="submit" name="submit" value="Register"><br>
+<input type="submit" name="update" value="Go to update"><br>
+<input type="submit" name="home" value="Dev Home">
 </form>

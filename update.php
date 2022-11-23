@@ -1,6 +1,7 @@
 <?php
 
 require 'config.inc.php';
+require 'auth.inc.php';
 //update.php?id=2
 if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = $_GET['id'];
@@ -53,7 +54,7 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
                 $name = $row['name'];
                 $gender = $row['gender'];
                 $color = $row['color'];
-                $password = $row['password'];
+                $password = $row['hash'];
             }
         $db->close();
     }
@@ -97,7 +98,12 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
             if ($color === '#00f' ) {
                 echo ' selected';
             }
+
+            if (isset($_POST['back'])) {
+                header('Location: index.php');
+            }    
             ?>
 </select><br>
 <input type="submit" name="submit" value="Update">
+<input type="submit" name="back" value="Back to register">
 </form>
