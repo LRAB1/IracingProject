@@ -1,4 +1,5 @@
 <?php
+
 require 'config.inc.php';
 //update.php?id=2
 if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
@@ -10,6 +11,7 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $name = '';
     $gender = '';
     $color = '';
+    $password = '';
 
     if (isset($_POST['submit'])) 
         $ok = true;
@@ -17,6 +19,10 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
         if (!isset($_POST['name']) || $_POST['name'] === '') {
             $ok = false;
                 } else { $name = $_POST['name'];
+        };
+        if (!isset($_POST['password']) || $_POST['password'] === '') {
+            $ok = false;
+                } else { $password = $_POST['password'];
         };
         if (!isset($_POST['gender']) || $_POST['gender'] === '') {
             $ok = false;
@@ -28,24 +34,26 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
         };
         if ($ok) {
             //database go brrrrrr
-            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
             $sql = sprintf(
-                "UPDATE users SET name='%s', gender ='%s', color='%s' WHERE id=%s",
+                "UPDATE users SET name='%s', gender ='%s', color='%s', password='%s' WHERE id=%s",
             $db->real_escape_string($name),
             $db->real_escape_string($gender),
             $db->real_escape_string($color),
+            $db->real_escape_string($password),
             $id);
         $db->query($sql);
         echo '<p>User updated.</p>';
         $db->close();
         } else {
-            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
             $sql = "SELECT * FROM users WHERE id=$id";
             $result = $db->query($sql);
             foreach ($result as $row) {
                 $name = $row['name'];
                 $gender = $row['gender'];
                 $color = $row['color'];
+                $password = $row['password'];
             }
         $db->close();
     }
@@ -54,7 +62,8 @@ if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
 <form
     action=""
     method="post">
-    Username: <input type="text"name="name"><br>
+    Username: <input type="text" name="name"><br>
+    Password: <input type="password" name="password"><br>
     Gender:
         <input type="radio" name="gender" value="f"<?php 
             if ($gender === 'f') {

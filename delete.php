@@ -10,7 +10,7 @@ require 'config.inc.php';
 
 
 
-$db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
+$db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
 $sql = "DELETE FROM users WHERE id=$id";
 $db->query($sql);
 echo '<p>User deleted.</p>';

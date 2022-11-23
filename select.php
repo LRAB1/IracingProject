@@ -4,7 +4,7 @@
 
 require 'config.inc.php';
 
-$db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DATABASE);
+$db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
 $sql = 'SELECT * FROM users';
 $result = $db->query($sql);
 
