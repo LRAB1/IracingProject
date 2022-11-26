@@ -1,7 +1,7 @@
-<!-- <header> Test </header> -->
+<header> Homepage </header>
 
 <?php
-##echos do not fire back the succes or failure of a login-attempt as of 23-11-22
+
 require 'config.inc.php';
 
 session_start();
@@ -52,7 +52,7 @@ echo "<div class='text-info'>$message</div>";
 </div>
 </div>
 
-<!-- <footer>
+<footer>
   <p>Author: Lex Bant</p>
   <p><a href="mailto:hege@example.com">hege@example.com</a></p>
-</footer> -->
+</footer>
