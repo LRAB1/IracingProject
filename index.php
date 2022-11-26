@@ -20,15 +20,16 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
         if ($row != null) {
             $hash = $row->hash;
             if (password_verify($_POST['password'], $hash)) {
-                $message = 'Login succesful.';
+                ##$message = 'Login succesful.';
+                header('Location: userpage.php');
                 
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;                
             } else {
-                $message = 'Login failed.';
+                $message = 'Invalid Username or password.';
             } 
         } else {
-            $message = 'Login failed.';
+            $message = 'Invalid Username or password.';
         }
     
         $db->close();
