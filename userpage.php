@@ -130,11 +130,11 @@ echo 'Userpage, will be setuppage';
 
             $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_IRACINGDATABASE);
             $sql = sprintf(
-                "INSERT INTO mx5globaldev (LF_pressure, LF_SpringPerch/* , LF_BumpStiffness, LF_ReboundStiffness, LF_Camber, RF_Pressure, RF_SpringPerch, RF_BumpStiffness, RF_ReboundStiffness, RF_Camber, RR_Pressure,
+                "INSERT INTO mx5globaldev (LF_pressure/*, LF_SpringPerch , LF_BumpStiffness, LF_ReboundStiffness, LF_Camber, RF_Pressure, RF_SpringPerch, RF_BumpStiffness, RF_ReboundStiffness, RF_Camber, RR_Pressure,
                 RR_SpringPerch, RR_BumpStiffness, RR_ReboundStiffness, RR_Camber, LR_Pressure, LR_SpringPerch, LR_BumpStiffness, LR_ReboundStiffness, LR_Camber, FuelLevel, Front_Toe, Rear_Toe, Front_ARB, Rear_ARB */)
-                VALUES ('%s','%s')",
+                VALUES ('%s')",
             $db->real_escape_string($LF_Pressure),
-            $db->real_escape_string($LF_SpringPerch),
+            ##$db->real_escape_string($LF_SpringPerch),
 /*             $db->real_escape_string($LF_BumpStiffness),
             $db->real_escape_string($LF_Camber),
             $db->real_escape_string($RF_Pressure),
