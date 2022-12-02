@@ -32,7 +32,7 @@ echo 'Userpage, will be setup page';
     $Rear_toe =                 '';
     $Rear_ARB =                 '';
     
-    if (isset($_POST['add'])) {
+    if (isset($_POST['insert'])) {
         $ok = true;
         if (!isset($_POST['LF_Pressure']) || $_POST['LF_Pressure'] === '') {
             $ok = false;
@@ -208,5 +208,5 @@ echo 'Userpage, will be setup page';
     Rear Toe in: <input type="number"name="Rear_toe"> milimeters<br>
     Rear Anti Rollbar: <input type="text"name="Rear_ARB"> stiffness<br>
 </select><br>
-<input type="submit" name="add" value="Add setup"><br>
+<input type="submit" name="insert" value="Add setup"><br>
 </form>
