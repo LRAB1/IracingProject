@@ -210,4 +210,8 @@ echo 'Setup page';
     Rear Anti Rollbar: <input type="text"name="Rear_ARB"value='1'> stiffness<br>
 </select><br>
 <input type="submit" name="insert" value="Add setup"><br>
+<input type="submit" name="back" value="back"><br>
+<?php if (isset($_POST['back'])) {
+            header('Location: userpage.php');
+        } ?>
 </form>
