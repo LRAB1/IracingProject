@@ -183,35 +183,35 @@ echo 'Setup page';
 <form
     action=""
     method="post">
-    Fuel level: <input type="number"name="FuelLevel" value='1'> liters<br>
-    Front Toe in: <input type="number"name="Front_Toe"value='1'> milimeters<br>
-    Front Anti Rollbar: <input type="text"name="Front_ARB"value='1'> stiffness<br>
-    Left Front Pressure: <input type= "number" name= "LF_Pressure"value='1'> Psi<br>
-    Left Front Spring Perch Offset: <input type="number"name="LF_SpringPerchOffset"value='1'> milimeters<br>
-    Left Front Bump Stiffness: <input type="number"name="LF_Bumpstiffness"value='1'> clicks<br>
-    Left Front Rebound Stiffnes: <input type="number"name="LF_ReboundStiffness"value='1'> clicks<br>
-    Left Front Camber: <input type="number"name="LF_Camber"value='1'> milimeters<br>
-    Right Front Pressure: <input type="number"name="RF_Pressure"value='1'> Psi<br>
-    Right Front Spring Perch Offset: <input type="number"name="RF_SpringPerch"value='1'> milimeters<br>
-    Right Front Bump Stiffness: <input type="number"name="RF_BumpStiffness"value='1'> clicks<br>
-    Right Front Rebound Stiffnes: <input type="number"name="RF_ReboundStiffness"value='1'> clicks<br>
-    Right Front Camber: <input type="text"name="RF_Camber"value='1'> milimeters<br>
-    Right Rear Pressure: <input type="text"name="RR_Pressure"value='1'> Psi<br>
-    Right Rear Spring Perch Offset: <input type="number"name="RR_SpringPerch"value='1'> milimeters<br>
-    Right Rear Bump Stiffness: <input type="number"name="RR_BumpStiffness"value='1'> clicks<br>
-    Right Rear Rebound Stiffnes: <input type="number"name="RR_ReboundStiffness"value='1'> clicks<br>
-    Right Rear Camber: <input type="number"name="RR_Camber"value='1'> milimeters<br>
-    Left Rear Pressure: <input type="number"name="LR_Pressure"value='1'> Psi<br>
-    Left Rear Spring Perch Offset: <input type="number"name="LR_SpringPerch"value='1'> milimeters<br>
-    Left Rear Bump Stiffness: <input type="number"name="LR_BumpStiffness"value='1'> clicks<br>
-    Left Rear Rebound Stiffnes: <input type="number"name="LR_ReboundStiffnes"value='1'> clicks<br>
-    Left Rear Camber: <input type="number"name="LR_Camber"value='1'> milimeters<br>
-    Rear Toe in: <input type="number"name="Rear_toe"value='1'> milimeters<br>
-    Rear Anti Rollbar: <input type="text"name="Rear_ARB"value='1'> stiffness<br>
+    Fuel level: <input type="number" step='0.1' name="FuelLevel" value='1'> liters<br>
+    Front Toe in: <input type="number" step='0.1'name="Front_Toe"value='1'> milimeters<br>
+    Front Anti Rollbar: <input type="number"name="Front_ARB"value='1'> stiffness -1 soft 0 med +1 hard<br>
+    Left Front Pressure: <input type= "number"step='0.1' name= "LF_Pressure"value='1'> Psi<br>
+    Left Front Spring Perch Offset: <input type="number" step='0.1'name="LF_SpringPerchOffset"value='1'> milimeters<br>
+    Left Front Bump Stiffness: <input type="number"step='0.1'name="LF_Bumpstiffness"value='1'> clicks<br>
+    Left Front Rebound Stiffnes: <input type="number"step='0.1'name="LF_ReboundStiffness"value='1'> clicks<br>
+    Left Front Camber: <input type="number"step='0.1'name="LF_Camber"value='1'> milimeters<br>
+    Right Front Pressure: <input type="number"step='0.1'name="RF_Pressure"value='1'> Psi<br>
+    Right Front Spring Perch Offset: <input type="number"step='0.1'name="RF_SpringPerch"value='1'> milimeters<br>
+    Right Front Bump Stiffness: <input type="number"step='0.1'name="RF_BumpStiffness"value='1'> clicks<br>
+    Right Front Rebound Stiffnes: <input type="number"step='0.1'name="RF_ReboundStiffness"value='1'> clicks<br>
+    Right Front Camber: <input type="text"step='0.1'name="RF_Camber"value='1'> milimeters<br>
+    Right Rear Pressure: <input type="text"step='0.1'name="RR_Pressure"value='1'> Psi<br>
+    Right Rear Spring Perch Offset: <input type="number"step='0.1'name="RR_SpringPerch"value='1'> milimeters<br>
+    Right Rear Bump Stiffness: <input type="number"step='0.1'name="RR_BumpStiffness"value='1'> clicks<br>
+    Right Rear Rebound Stiffnes: <input type="number"step='0.1'name="RR_ReboundStiffness"value='1'> clicks<br>
+    Right Rear Camber: <input type="number"step='0.1'name="RR_Camber"value='1'> milimeters<br>
+    Left Rear Pressure: <input type="number"step='0.1'name="LR_Pressure"value='1'> Psi<br>
+    Left Rear Spring Perch Offset: <input type="number"step='0.1'name="LR_SpringPerch"value='1'> milimeters<br>
+    Left Rear Bump Stiffness: <input type="number"step='0.1'name="LR_BumpStiffness"value='1'> clicks<br>
+    Left Rear Rebound Stiffnes: <input type="number"step='0.1'name="LR_ReboundStiffnes"value='1'> clicks<br>
+    Left Rear Camber: <input type="number"step='0.1'name="LR_Camber"value='1'> milimeters<br>
+    Rear Toe in: <input type="number"step='0.1'name="Rear_toe"value='1'> milimeters<br>
+    Rear Anti Rollbar: <input type="number"name="Rear_ARB"value='1'> stiffness -1 soft 0 med +1 hard<br>
 </select><br>
 <input type="submit" name="insert" value="Add setup"><br>
-<input type="submit" name="back" value="back"><br>
-<?php if (isset($_POST['back'])) {
+<input type="submit" name="home" value="Home"><br>
+<?php if (isset($_POST['home'])) {
             header('Location: userpage.php');
         } ?>
 </form>
