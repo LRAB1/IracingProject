@@ -142,7 +142,7 @@ echo 'Setup page';
                     RF_Camber, RR_Pressure, RR_SpringPerch, RR_BumpStiffness, RR_ReboundStiffness, RR_Camber, LR_Pressure, LR_SpringPerch, LR_BumpStiffness, LR_ReboundStiffnes, LR_Camber, Rear_toe, Rear_ARB)
                     VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
             $db->real_escape_string($LF_Pressure),
-            $db->real_escape_string($LF_Pressure),
+            $db->real_escape_string($RF_Pressure),
             $db->real_escape_string($LF_SpringPerchOffset),
             $db->real_escape_string($FuelLevel),
             $db->real_escape_string($Front_Toe),
