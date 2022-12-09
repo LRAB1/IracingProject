@@ -22,7 +22,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
             if (password_verify($_POST['password'], $hash)) {
                 $message = 'Login succesful.';
 
-                header('Location: userpage.php');
+                header('Location: setuppage.php');
                 
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;                
