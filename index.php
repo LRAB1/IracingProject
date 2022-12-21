@@ -22,10 +22,11 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
             if (password_verify($_POST['password'], $hash)) {
                 $message = 'Login succesful.';
 
-                header('Location: setuppage.php');
+                header('Location: userpage.php');
                 
                 $_SESSION['username'] = $row->name;
-                $_SESSION['isAdmin'] = $row->isAdmin;                
+                $_SESSION['isAdmin'] = $row->isAdmin;
+                $_SESSION['isUser'] = $row->isUser;                
             } else {
                 $message = 'Invalid Username or password.';
             } 
@@ -56,5 +57,5 @@ echo "<div class='text-info'>$message</div>";
 
 <footer>
   <p>Author: Lex Bant</p>
-  <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+  <!-- <p><a href="mailto:hege@example.com">hege@example.com</a></p> -->
 </footer>
