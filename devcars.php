@@ -1,9 +1,9 @@
 <?php
-//Adds setups as off 9-12-2022
+//Development playarea
 require 'auth.inc.php';
 require 'config.inc.php';
 
-echo 'Setup page';
+echo 'DEV PLAYGROUND';
 
 
     $LF_Pressure =              '';
@@ -139,7 +139,7 @@ echo 'Setup page';
             $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_CARDATABASE);
             $sql = sprintf(
                 //watch out for static naming for cars 21-12-22
-                "INSERT INTO mx5globalcup (LF_pressure, RF_pressure, LF_SpringPerchOffset, FuelLevel, Front_Toe, Front_ARB, LF_Bumpstiffness, LF_ReboundStiffness, LF_Camber, RF_SpringPerch, RF_BumpStiffness, RF_ReboundStiffness,
+                "INSERT INTO devcars (LF_pressure, RF_pressure, LF_SpringPerchOffset, FuelLevel, Front_Toe, Front_ARB, LF_Bumpstiffness, LF_ReboundStiffness, LF_Camber, RF_SpringPerch, RF_BumpStiffness, RF_ReboundStiffness,
                     RF_Camber, RR_Pressure, RR_SpringPerch, RR_BumpStiffness, RR_ReboundStiffness, RR_Camber, LR_Pressure, LR_SpringPerch, LR_BumpStiffness, LR_ReboundStiffnes, LR_Camber, Rear_toe, Rear_ARB)
                     VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
             $db->real_escape_string($LF_Pressure),
