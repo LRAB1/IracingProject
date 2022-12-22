@@ -1,9 +1,11 @@
+<header>DEV PLAYGROUND</header>
+
 <?php
 //Development playarea
 require 'auth.inc.php';
 require 'config.inc.php';
 
-echo 'DEV PLAYGROUND';
+//echo 'DEV PLAYGROUND';
 
 
     $LF_Pressure =              '';

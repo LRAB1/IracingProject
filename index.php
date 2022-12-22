@@ -1,5 +1,6 @@
 <header> Homepage </header>
 
+
 <?php
 
 require 'config.inc.php';
@@ -36,7 +37,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
     
         $db->close();
 }
-    
+
 ?>
 
 <?php

@@ -1,9 +1,11 @@
+<header> Setup page </header>
+
 <?php
 //Adds setups as off 9-12-2022
 require 'auth.inc.php';
 require 'config.inc.php';
 
-echo 'Setup page';
+//echo 'Setup page';
 
 
     $LF_Pressure =              '';
