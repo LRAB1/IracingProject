@@ -2,10 +2,12 @@
 
 <?php
 //Development playarea
-require 'auth.inc.php';
+require 'dev.inc.php';
 require 'config.inc.php';
 
-//echo 'DEV PLAYGROUND';
+//This page should get the DevCars table, in later stages this is to get the selected car.
+
+$cars = [];
 
 
     $LF_Pressure =              '';
@@ -214,6 +216,23 @@ require 'config.inc.php';
 </select><br>
 <input type="submit" name="insert" value="Add setup"><br>
 <input type="submit" name="home" value="Home"><br>
+
+<select Car="Cars[]" multiple size="3">
+        <option value="MX5 Global Cup"><?php
+            if (in_array('mx5global', $cars)) {
+                echo ' selected';
+            }
+        ?>Mazda MX 5</option>
+        <option value="Porsche Cayman GT4"><?php
+            if (in_array('Cayman GT4', $cars)) {
+                echo ' selected';
+            }
+        ?>Porsche Cayman GT4</option>
+        <option value="Jaguar F-type GT3"><?php
+            if (in_array('FtypeGt3', $cars)) {
+                echo ' selected';
+            }
+            ?>Jaguar F-Type GT3</option>
 <?php if (isset($_POST['home'])) {
             header('Location: userpage.php');
         } ?>

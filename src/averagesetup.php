@@ -1,11 +1,13 @@
 <?php
 
-require 'auth.inc.php';
+require 'dev.inc.php';
 require 'config.inc.php';
 echo 'Under construction';
 
-//Page for getting an average setup, in its current state it only builds an average for 1 car.
+$result = [];
 
+//Page for getting an average setup, in its current state it only builds an average for 1 car.
+//LRAB1 2022-12-23: This page is being prepared to return values in nice looking field in stead of just ugly SQL output.
 ?>
 <br>
 <?php
