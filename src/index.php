@@ -1,63 +1,26 @@
-<?php session_start(); 
-?>
+<h1><header>Homepage</header></h1>
 
-<header> Homepage </header>
+<body>
+    <h2>What is the setup project?</h2>
+    <h4>Well, a little side project that I'm running with some colleagues of mine. To be more clear; it aims to gather data for specific cars in Iracing (currently the Mx5 only)
+    to get an average setup for all the tracks and give that back to the user. In later stages I'm looking to add the tracks and make the back-end generate an average setup for each car and track combination.
+    This website is in it's very early stages and does not either look nice or function all that intuitively. So bear with us as I make this website more functional and user friendly. Sign up and add data,
+    or just lurk around and get data.</h4>
+</body>
 
 
-<?php
-
-require 'config.inc.php';
-
-$message = '';
-
-if (isset($_POST['name']) && isset($_POST['password'])) {
-    $db = new mysqli (
-        MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-    $sql = sprintf("SELECT * FROM users WHERE name='%s'",
-        $db->real_escape_string($_POST['name']));
-
-        $result = $db->query($sql);
-        $row = $result->fetch_object();
-
-        if ($row != null) {
-            $hash = $row->hash;
-            if (password_verify($_POST['password'], $hash)) {
-                $message = 'Login succesful.';
-
-                require('userpage.php');
-                
-                $_SESSION['username'] = $row->name;
-                $_SESSION['isAdmin'] = $row->isAdmin;
-                $_SESSION['isUser'] = $row->isUser;                
-            } else {
-                $message = 'Invalid Username or password.';
-            } 
-        } else {
-            $message = 'Invalid Username or password.';
+<form
+    action=""
+    method="post">
+    <?php     
+        if (isset($_POST['Login'])) {
+        require('login.php');
+        } 
+        
+        if (isset($_POST['Register'])) {
+            require('register.php');
         }
-    
-        $db->close();
-}
+        ?>
 
-?>
-
-<?php
-echo "<div class='text-info'>$message</div>";
-?>
-
-<form method="post" action="">
-    <div class="form-group">
-        <label for="name">User name<label> <input type="text" name="name" class="form-control">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label> <input type="password" name="password" class="form-control">
-</div>
-<input type="submit" value="Login" class="btn btn-primary">
-</form>
-</div>
-</div>
-
-<footer>
-  <p>Author: Lex Bant</p>
-  <!-- <p><a href="mailto:hege@example.com">hege@example.com</a></p> -->
-</footer>
+<input type="submit" name="Register" value="Register" class="btn btn-primary">
+<input type="submit" name="Login"value="Login" class="btn btn-secondary">

@@ -1,11 +1,11 @@
+<?php session_start(); ?>
+
 <header> Homepage </header>
 
 
 <?php
 
 require 'config.inc.php';
-
-session_start();
 
 $message = '';
 
@@ -23,7 +23,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
             if (password_verify($_POST['password'], $hash)) {
                 $message = 'Login succesful.';
 
-                header('Location: userpage.php');
+                require('userpage.php');
                 
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;

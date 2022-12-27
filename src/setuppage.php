@@ -215,6 +215,6 @@ require 'config.inc.php';
 <input type="submit" name="insert" value="Add setup"><br>
 <input type="submit" name="home" value="Home"><br>
 <?php if (isset($_POST['home'])) {
-            header('Location: userpage.php');
+            require('userpage.php');
         } ?>
 </form>

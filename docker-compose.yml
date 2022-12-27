@@ -6,7 +6,7 @@
     ports:
       - 80:80
     volumes:
-      - ./:/var/www/html
+      - ./src:/var/www/html/
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD

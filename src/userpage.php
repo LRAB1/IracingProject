@@ -9,14 +9,14 @@ echo 'Select where you want to go!';
     method="post">
     <?php     
         if (isset($_POST['add'])) {
-        header('Location: setuppage.php');
+        require('setuppage.php');
         } 
         
         if (isset($_POST['getsetup'])) {
-            header('Location: averagesetup.php');
+            require('averagesetup.php');
         }
         if (isset($_POST['devcars'])) {
-            header('Location: devcars.php');
+            require('devcars.php');
         }
         ?>
 <input type="submit" name="add" value="Add setup"><br>
