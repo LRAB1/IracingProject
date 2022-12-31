@@ -1,4 +1,4 @@
-<header> test </header>
+<header> Homepage </header>
 
 
 <?php
