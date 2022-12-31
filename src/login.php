@@ -21,7 +21,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
             if (password_verify($_POST['password'], $hash)) {
                 $message = 'Login succesful.';
 
-                header ('userpage.php');
+                require('userpage.php');
                 
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;
