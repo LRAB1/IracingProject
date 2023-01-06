@@ -2,3 +2,5 @@
 /.env
 /templates
 /db
+/example.com.key
+/example.com.pem
