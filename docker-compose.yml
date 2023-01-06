@@ -15,7 +15,6 @@
   mysql:
     image: mysql
     environment:
-      MYSQL_USER: setupproject
       MYSQL_ROOT_PASSWORD: dev
     volumes:
       - ./db:/var/lib/mysql
