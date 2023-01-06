@@ -19,7 +19,7 @@
     volumes:
       - ./db:/var/lib/mysql
   phpmyadmin:
-    image: phpmyadmin:apache
+    image: arm64v8/phpmyadmin
     environment:
       - PMA_HOST=mysql
     ports:
