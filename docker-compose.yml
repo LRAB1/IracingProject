@@ -23,6 +23,6 @@
     environment:
       - PMA_HOST=mysql
     links:
-     -mysql
+      - mysql
     ports:
       - 81:80
