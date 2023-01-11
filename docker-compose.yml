@@ -20,7 +20,7 @@
       - ./db:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: arm64v8/phpmyadmin
     ports:
       - 8080:80
     links:
