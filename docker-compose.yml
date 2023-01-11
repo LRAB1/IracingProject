@@ -22,5 +22,7 @@
     image: arm64v8/phpmyadmin
     environment:
       - PMA_HOST=mysql
+    links:
+     -mysql
     ports:
       - 81:80
