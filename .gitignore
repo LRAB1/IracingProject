@@ -1,6 +1,6 @@
 /keys.php
 /.env
 /templates
-/html/db
+/db
 /example.com.key
 /example.com.pem
