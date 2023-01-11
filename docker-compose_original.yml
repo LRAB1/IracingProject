@@ -18,17 +18,9 @@
       MYSQL_ROOT_PASSWORD: dev
     volumes:
       - ./db:/var/lib/mysql
-
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - 8080:80
-    links:
-      - mysql
+    image: arm64v8/phpmyadmin
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      container_name: phpmyadmin_service
-      UPLOAD_LIMIT: 1G
-    env_file:
-     - .env
+      - PMA_HOST=mysql
+    ports:
+      - 81:80
