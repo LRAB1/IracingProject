@@ -12,10 +12,17 @@
       - MYSQL_PASSWORD
       - MYSQL_HOST
 
-  mysql:
-    image: mysql
+  db:
+    image: mariadb
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: dev
+      MARIADB_ROOT_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
     volumes:
       - ./db:/var/lib/mysql
   phpmyadmin:
