@@ -12,11 +12,6 @@
       - MYSQL_PASSWORD
       - MYSQL_HOST
 
-  db:
-    image: mariadb
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: example
 
   adminer:
     image: adminer
