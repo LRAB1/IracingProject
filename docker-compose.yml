@@ -17,6 +17,8 @@
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: dev
+    ports:
+      - 82:80
   phpmyadmin:
     image: arm64v8/phpmyadmin
     environment:
