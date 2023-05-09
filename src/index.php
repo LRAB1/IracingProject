@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<link rel="icon" type="image/png" href="/images/favicon.png">
 <h1><header>The Setup Project</header></h1>
 
 <body>
