@@ -5,10 +5,9 @@
     require 'config.inc.php';
 
     $name = '';
-    //$gender = '';
-    //$color = '';
     $password = '';    
-
+//TODDO: failed to add user routine
+//This connects to the dabase and allows for users to be added.
     if (isset($_POST['register'])) {
         $ok = true;
 
@@ -20,14 +19,6 @@
             $ok = false;
                 } else { $password = $_POST['password'];
         };
-/*         if (!isset($_POST['gender']) || $_POST['gender'] === '') {
-            $ok = false;
-                } else { $gender = $_POST['gender'];
-        };
-        if (!isset($_POST['color']) || $_POST['color'] === '') {
-            $ok = false;
-                } else { $color = $_POST['color'];
-        } */;
         if ($ok) {
             //database go brrrrrr
             $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -41,7 +32,7 @@
         echo '<p>User added.</p>';
         $db->close();
         };
-    }
+    };
 ?>
 
 <form
@@ -49,49 +40,7 @@
     method="post">
     Username: <input type="text"name="name"><br>
     Password: <input type="password"name="password"><br>
-    <!-- Gender:
-        <input type="radio" name="gender" value="f"<?php 
-            if ($gender === 'f') {
-                echo  'checked';
-            }
-        ?>> Female
-        <input type="radio" name="gender" value="m"<?php 
-            if ($gender === 'm') {
-                echo  'checked';
-            }
-        ?>> Male
-        <input type="radio" name="gender" value="o"<?php 
-            if ($gender === 'o') {
-                echo  'checked';
-            }
-        ?>> Other<br> -->
-<!--     Favorite color:
-        <select name="color">
-            <option value="">Please select</option>
-            <option value="#f00">Red</option><?php
-            if ($color === '#f00' ) {
-                echo ' selected';
-            }
-            ?>
-            <option value="#0f0">Green</option><?php
-            if ($color === '#0f0' ) {
-                echo ' selected';
-            }
-            ?>
-            <option value="#00f">Blue</option><?php
-            if ($color === '#00f' ) {
-                echo ' selected';
-            }
-            if (isset($_POST['update'])) {
-                header('Location: update.php');
-            }    
-
-            if (isset($_POST['home'])) {
-                header('Location: index.php');
-            }    
-
-            ?>
---></select><br>
+</select><br>
 <input type="submit" name="register" value="Register"><br>
 <input type="submit" name="home" value="Home">
 </form>
