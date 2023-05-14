@@ -32,7 +32,7 @@
             //database go brrrrrr
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
-            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_USERDATABASE);
             $sql = sprintf(
                 "INSERT INTO users (name, hash) VALUES ('%s', '%s')",
             $db->real_escape_string($name),

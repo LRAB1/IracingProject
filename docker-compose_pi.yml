@@ -12,14 +12,13 @@
       - MYSQL_PASSWORD
       - MYSQL_HOST
 
-  mysql:
-    image: mysql
+  db:
+    image: arm64v8/mariadb
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: dev
-    volumes:
-      - ./db:/var/lib/mysql
+      MARIADB_ROOT_PASSWORD: dev
   phpmyadmin:
-    image: phpmyadmin
+    image: arm64v8/phpmyadmin
     environment:
       - PMA_HOST=mysql
     ports:
