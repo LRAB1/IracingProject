@@ -10,19 +10,21 @@
     or just lurk around and get data.</h4>
 </body>
 
-
-<form
-    action=""
-    method="post">
-    <?php     
-        if (isset($_POST['Login'])) {
+<?php
+switch($_GET['action']) {
+    case 'login': {
         require('login.php');
-        } 
-        
-        if (isset($_POST['Register'])) {
-            require('register.php');
-        }
+        break;
+    }
+    case 'register': {
+        require('register.php');
+        break;
+    }
+    default: {
         ?>
-
-<input type="submit" name="Register" value="Register" class="btn btn-primary">
-<input type="submit" name="Login"value="Login" class="btn btn-secondary">
+        <a href="/index.php?action=login">Login</a>
+        <a href="/index.php?action=register">Register</a>
+        <?php
+    }
+}
+?>

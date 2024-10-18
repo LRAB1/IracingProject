@@ -9,46 +9,44 @@
     //$color = '';
     $password = '';    
 
-    if (isset($_POST['register'])) {
-        $ok = true;
+    $ok = true;
 
-        if (!isset($_POST['name']) || $_POST['name'] === '') {
-            $ok = false;
-                } else { $name = $_POST['name'];
-        };
-        if (!isset($_POST['password']) || $_POST['password'] === '') {
-            $ok = false;
-                } else { $password = $_POST['password'];
-        };
+    if (!isset($_POST['name']) || $_POST['name'] === '') {
+        $ok = false;
+            } else { $name = $_POST['name'];
+    };
+    if (!isset($_POST['password']) || $_POST['password'] === '') {
+        $ok = false;
+            } else { $password = $_POST['password'];
+    };
 /*         if (!isset($_POST['gender']) || $_POST['gender'] === '') {
-            $ok = false;
-                } else { $gender = $_POST['gender'];
-        };
-        if (!isset($_POST['color']) || $_POST['color'] === '') {
-            $ok = false;
-                } else { $color = $_POST['color'];
-        } */;
-        if ($ok) {
-            //database go brrrrrr
-            $hash = password_hash($password, PASSWORD_DEFAULT);
+        $ok = false;
+            } else { $gender = $_POST['gender'];
+    };
+    if (!isset($_POST['color']) || $_POST['color'] === '') {
+        $ok = false;
+            } else { $color = $_POST['color'];
+    } */;
+    if ($ok) {
+        //database go brrrrrr
+        $hash = password_hash($password, PASSWORD_DEFAULT);
 
-            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-            $sql = sprintf(
-                "INSERT INTO users (name, hash) VALUES ('%s', '%s')",
-            $db->real_escape_string($name),
-            $db->real_escape_string($hash));
-        $db->query($sql);
-        echo '<p>User added.</p>';
-        $db->close();
-        };
-    }
+        $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+        $sql = sprintf(
+            "INSERT INTO users (name, hash) VALUES ('%s', '%s')",
+        $db->real_escape_string($name),
+        $db->real_escape_string($hash));
+    $db->query($sql);
+    echo '<p>User added.</p>';
+    $db->close();
+    };
 ?>
 
 <form
-    action=""
+    action="/index.php?action=register"
     method="post">
-    Username: <input type="text"name="name"><br>
-    Password: <input type="password"name="password"><br>
+    Username: <input type="text" name="name"><br>
+    Password: <input type="password" name="password"><br>
     <!-- Gender:
         <input type="radio" name="gender" value="f"<?php 
             if ($gender === 'f') {
@@ -92,6 +90,6 @@
 
             ?>
 --></select><br>
-<input type="submit" name="register" value="Register"><br>
-<input type="submit" name="home" value="Home">
+    
+    <input type="submit" value="Register" />
 </form>
