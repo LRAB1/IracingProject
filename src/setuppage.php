@@ -2,7 +2,7 @@
 
 <?php
 //Adds setups as off 9-12-2022
-//require 'auth.inc.php'; //TODO: make this required again.
+//require 'auth.inc.php'; //TODO: make this required again, currently throws an error about already being required
 require 'config.inc.php';
 
 //echo 'Setup page';
@@ -212,7 +212,7 @@ require 'config.inc.php';
     Rear Toe in: <input type="number"step='0.1'name="Rear_toe"value='1'> milimeters<br>
     Rear Anti Rollbar: <input type="number"name="Rear_ARB"value='1'> stiffness -1 soft 0 med +1 hard<br>
 </select><br>
-<input type="submit" name="insert" value="Add setup"><br>
+<input type="submit" name="insert" value="insert"><br>
 <input type="submit" name="home" value="Home"><br>
 <?php if (isset($_POST['home'])) {
             require('userpage.php');
