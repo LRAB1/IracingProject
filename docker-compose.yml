@@ -1,4 +1,3 @@
- version: "3"
  services:
 
   apache:
@@ -11,15 +10,16 @@
       - MYSQL_USER
       - MYSQL_PASSWORD
       - MYSQL_HOST
-  mariadb:
-    image: mariadb
+
+  mysql:
+    image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: dev
     volumes:
-      - ./db:/var/lib/mariadb
+      - ./db:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin
     environment:
-      - PMA_HOST=mariadb
+      - PMA_HOST=mysql
     ports:
       - 81:80
