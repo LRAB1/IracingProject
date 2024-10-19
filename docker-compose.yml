@@ -11,16 +11,15 @@
       - MYSQL_USER
       - MYSQL_PASSWORD
       - MYSQL_HOST
-
-  mysql:
-    image: mysql
+  mariadb:
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: dev
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db:/var/lib/mariadb
   phpmyadmin:
     image: phpmyadmin
     environment:
-      - PMA_HOST=mysql
+      - PMA_HOST=mariadb
     ports:
       - 81:80
