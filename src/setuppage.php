@@ -2,7 +2,7 @@
 
 <?php
 //Adds setups as off 9-12-2022
-//require 'auth.inc.php';
+//require 'auth.inc.php'; //TODO: make this required again, currently throws an error about already being required
 require 'config.inc.php';
 
 //echo 'Setup page';
@@ -138,7 +138,7 @@ require 'config.inc.php';
         };
         if ($ok) {
             //database go brrrrrr
-            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_CARDATABASE);
+            $db = new mysqli (MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_CARDATABASE);            
             $sql = sprintf(
                 //watch out for static naming for cars 21-12-22
                 "INSERT INTO mx5globalcup (LF_pressure, RF_pressure, LF_SpringPerchOffset, FuelLevel, Front_Toe, Front_ARB, LF_Bumpstiffness, LF_ReboundStiffness, LF_Camber, RF_SpringPerch, RF_BumpStiffness, RF_ReboundStiffness,
@@ -168,7 +168,7 @@ require 'config.inc.php';
             $db->real_escape_string($LR_ReboundStiffnes),
             $db->real_escape_string($LR_Camber),
             $db->real_escape_string($Rear_toe),
-            $db->real_escape_string($Rear_ARB),
+            $db->real_escape_string($Rear_ARB)
             );
         $db->query($sql);
         echo '<p>Data added.</p>';
@@ -212,7 +212,7 @@ require 'config.inc.php';
     Rear Toe in: <input type="number"step='0.1'name="Rear_toe"value='1'> milimeters<br>
     Rear Anti Rollbar: <input type="number"name="Rear_ARB"value='1'> stiffness -1 soft 0 med +1 hard<br>
 </select><br>
-<input type="submit" name="insert" value="Add setup"><br>
+<input type="submit" name="insert" value="insert"><br>
 <input type="submit" name="home" value="Home"><br>
 <?php if (isset($_POST['home'])) {
             require('userpage.php');

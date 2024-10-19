@@ -42,14 +42,14 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
 echo "<div class='text-info'>$message</div>";
 ?>
 
-<form method="post" action="">
+<form method="post" action="/index.php?action=login">
     <div class="form-group">
         <label for="name">User name<label> <input type="text" name="name" class="form-control">
     </div>
     <div class="form-group">
         <label for="password">Password</label> <input type="password" name="password" class="form-control">
 </div>
-<input type="submit" value="Login" class="btn btn-primary">
+<input type="submit" name="action" value="Login" class="btn btn-primary">
 <!-- <input type="submit" value="Register" class="btn btn-secondary"> -->
 </form>
 </div>

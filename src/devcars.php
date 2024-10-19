@@ -170,7 +170,7 @@ $cars = [];
             $db->real_escape_string($LR_ReboundStiffnes),
             $db->real_escape_string($LR_Camber),
             $db->real_escape_string($Rear_toe),
-            $db->real_escape_string($Rear_ARB),
+            $db->real_escape_string($Rear_ARB)
             );
         $db->query($sql);
         echo '<p>Data added.</p>';
