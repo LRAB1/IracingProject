@@ -26,6 +26,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;
                 $_SESSION['isUser'] = $row->isUser;                
+                $_SESSION['IsLoggedIn'] = 1;
             } else {
                 $message = 'Invalid Username or password.';
             } 

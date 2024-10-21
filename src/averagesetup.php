@@ -1,6 +1,6 @@
 <?php
 
-//require 'dev.inc.php';
+require 'dev.inc.php';
 require 'config.inc.php';
 echo 'Under construction';
 

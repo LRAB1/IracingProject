@@ -11,16 +11,33 @@
 </body>
 
 <?php
-switch($_GET['action']) {
-    case 'login': {
-        require('login.php');
-        break;
-    }
-    case 'register': {
-        require('register.php');
-        break;
-    }
-    default: {
+// Check if the user is logged in
+if (isset($_SESSION['IsLoggedIn']) && $_SESSION['IsLoggedIn'] > 0) {
+    // If the user is logged in, show the user page or logout option
+    echo '<p>Welcome, ' . $_SESSION['username'] . '!</p>';
+    echo '<a href="logout.php">Logout</a>'; // Add a logout option
+    require('userpage.php'); // Optionally require the userpage here
+} else {
+    // If not logged in, check if an action is set in the URL
+    if (isset($_GET['action'])) {
+        switch($_GET['action']) {
+            case 'login': {
+                require('login.php');
+                break;
+            }
+            case 'register': {
+                require('register.php');
+                break;
+            }
+            default: {
+                ?>
+                <a href="/index.php?action=login">Login</a>
+                <a href="/index.php?action=register">Register</a>
+                <?php
+            }
+        }
+    } else {
+        // If no action is set, show default links
         ?>
         <a href="/index.php?action=login">Login</a>
         <a href="/index.php?action=register">Register</a>
