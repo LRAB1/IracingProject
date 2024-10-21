@@ -198,8 +198,8 @@ require 'config.inc.php';
     Right Front Spring Perch Offset: <input type="number"step='0.1'name="RF_SpringPerch"value='1'> milimeters<br>
     Right Front Bump Stiffness: <input type="number"step='0.1'name="RF_BumpStiffness"value='1'> clicks<br>
     Right Front Rebound Stiffnes: <input type="number"step='0.1'name="RF_ReboundStiffness"value='1'> clicks<br>
-    Right Front Camber: <input type="text"step='0.1'name="RF_Camber"value='1'> milimeters<br>
-    Right Rear Pressure: <input type="text"step='0.1'name="RR_Pressure"value='1'> Psi<br>
+    Right Front Camber: <input type="number"step='0.1'name="RF_Camber"value='1'> milimeters<br>
+    Right Rear Pressure: <input type="number"step='0.1'name="RR_Pressure"value='1'> Psi<br>
     Right Rear Spring Perch Offset: <input type="number"step='0.1'name="RR_SpringPerch"value='1'> milimeters<br>
     Right Rear Bump Stiffness: <input type="number"step='0.1'name="RR_BumpStiffness"value='1'> clicks<br>
     Right Rear Rebound Stiffnes: <input type="number"step='0.1'name="RR_ReboundStiffness"value='1'> clicks<br>

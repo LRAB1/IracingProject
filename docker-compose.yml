@@ -12,7 +12,7 @@
       - MYSQL_HOST
 
   mysql:
-    image: mysql
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: dev
     volumes:
