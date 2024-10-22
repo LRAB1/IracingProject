@@ -2,7 +2,7 @@
 
 <?php
 //Adds setups as off 9-12-2022
-//require 'auth.inc.php'; //TODO: make this required again, currently throws an error about already being required
+require 'auth.inc.php'; //TODO: make this required again, currently throws an error about already being required
 require 'config.inc.php';
 
 //echo 'Setup page';

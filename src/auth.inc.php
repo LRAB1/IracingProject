@@ -1,14 +1,9 @@
 <?php
+##TODO: fix this so login is actually checked, instead of being able to navigate to the page and just seeing a header error.
 ##Protects unauthorized acces to pages, needs to be included in the page.
 
 
-session_start();
-
-if (!isset($_SESSION['isAdmin']) ||
-    $_SESSION['isAdmin'] != 1) {
-        header('Location: index.php');
-    } else if (!isset($_SESSION['isUser']) ||
-    $_SESSION['isUser'] != 1) {
-        header('Location: index.php');
-    }
+if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+};
 ?>

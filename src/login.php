@@ -4,6 +4,7 @@
 <?php
 
 require 'config.inc.php';
+require 'auth.inc.php';
 
 $message = '';
 
@@ -26,7 +27,7 @@ if (isset($_POST['name']) && isset($_POST['password'])) {
                 $_SESSION['username'] = $row->name;
                 $_SESSION['isAdmin'] = $row->isAdmin;
                 $_SESSION['isUser'] = $row->isUser;                
-                $_SESSION['IsLoggedIn'] = 1;
+                $_SESSION['IsLoggedIn'] = 1; //TODO: make this not a cookie function but use a database switch. 22-10-2024
             } else {
                 $message = 'Invalid Username or password.';
             } 
@@ -57,6 +58,6 @@ echo "<div class='text-info'>$message</div>";
 </div>
 
 <footer>
-  <p>Author: Lex Bant</p>
+  <p>Author: WeaponA</p>
   <!-- <p><a href="mailto:hege@example.com">hege@example.com</a></p> -->
 </footer>
