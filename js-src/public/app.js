@@ -301,4 +301,79 @@ async function calculateAverage() {
     }
 }
 
+async function importSetups() {
+    const fileInput = document.getElementById('setup-files');
+    const files = fileInput.files;
+    
+    if (files.length === 0) {
+        showMessage('import-message', 'Please select at least one setup file', true);
+        return;
+    }
+    
+    const confirmation = confirm(`You have selected ${files.length} file(s) to import. Do you want to proceed?`);
+    if (!confirmation) {
+        return;
+    }
+    
+    const resultsContainer = document.getElementById('import-results');
+    resultsContainer.innerHTML = '<p>Processing files...</p>';
+    
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append('setupFiles', files[i]);
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE}/setups/import`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            const successCount = result.imported || 0;
+            const failCount = result.failed || 0;
+            
+            let resultHTML = `<div class="import-summary">
+                <h3>Import Complete</h3>
+                <p><strong>Successfully imported:</strong> ${successCount} setup(s)</p>`;
+            
+            if (failCount > 0) {
+                resultHTML += `<p><strong>Failed to import:</strong> ${failCount} file(s)</p>`;
+            }
+            
+            if (result.errors && result.errors.length > 0) {
+                resultHTML += '<h4>Errors:</h4><ul>';
+                result.errors.forEach(error => {
+                    resultHTML += `<li>${error}</li>`;
+                });
+                resultHTML += '</ul>';
+            }
+            
+            if (result.details && result.details.length > 0) {
+                resultHTML += '<h4>Imported Setups:</h4><ul>';
+                result.details.forEach(detail => {
+                    resultHTML += `<li>${detail.setupName} - ${detail.car} @ ${detail.track}</li>`;
+                });
+                resultHTML += '</ul>';
+            }
+            
+            resultHTML += '</div>';
+            resultsContainer.innerHTML = resultHTML;
+            
+            showMessage('import-message', `Import completed: ${successCount} successful, ${failCount} failed`, failCount > 0);
+            
+            // Clear the file input
+            fileInput.value = '';
+        } else {
+            resultsContainer.innerHTML = `<p class="error">Import failed: ${result.error}</p>`;
+            showMessage('import-message', `Error: ${result.error}`, true);
+        }
+    } catch (err) {
+        resultsContainer.innerHTML = `<p class="error">Error during import: ${err.message}</p>`;
+        showMessage('import-message', `Error: ${err.message}`, true);
+    }
+}
+
 document.getElementById('setup-form').addEventListener('submit', saveSetup);

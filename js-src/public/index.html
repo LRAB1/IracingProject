@@ -14,6 +14,7 @@
         
         <nav>
             <button onclick="showView('add')" class="nav-btn">Add Setup</button>
+            <button onclick="showView('import')" class="nav-btn">Import Setups</button>
             <button onclick="showView('list')" class="nav-btn">View Setups</button>
             <button onclick="showView('average')" class="nav-btn">Average Setups</button>
         </nav>
@@ -161,6 +162,21 @@
                 <button type="submit" class="btn-primary">Save Setup</button>
             </form>
             <div id="add-message" class="message"></div>
+        </div>
+        
+        <!-- Import Setups View -->
+        <div id="import-view" class="view">
+            <h2>Import Setups from Files</h2>
+            <div class="form-section">
+                <p>Select iRacing setup files (.sto) to import. The system will ask for confirmation before saving.</p>
+                <div class="form-group">
+                    <label for="setup-files">Choose Setup Files:</label>
+                    <input type="file" id="setup-files" accept=".sto" multiple>
+                </div>
+                <button onclick="importSetups()" class="btn-primary">Import Selected Files</button>
+            </div>
+            <div id="import-message" class="message"></div>
+            <div id="import-results"></div>
         </div>
         
         <!-- List Setups View -->

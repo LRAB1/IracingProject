@@ -1,11 +1,25 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const multer = require('multer');
 const SetupStorage = require('./services/SetupStorage');
+const SetupParser = require('./services/SetupParser');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const storage = new SetupStorage('./data');
+
+// Configure multer for file uploads
+const upload = multer({
+  storage: multer.memoryStorage(),
+  fileFilter: (req, file, cb) => {
+    if (path.extname(file.originalname).toLowerCase() === '.sto') {
+      cb(null, true);
+    } else {
+      cb(new Error('Only .sto files are allowed'));
+    }
+  }
+});
 
 app.use(cors());
 app.use(express.json());
@@ -85,6 +99,46 @@ app.delete('/api/setups/:id', async (req, res) => {
     res.json({ message: 'Setup deleted successfully' });
   } catch (err) {
     res.status(404).json({ error: err.message });
+  }
+});
+
+// Import setups from uploaded files
+app.post('/api/setups/import', upload.array('setupFiles', 50), async (req, res) => {
+  try {
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No files uploaded' });
+    }
+    
+    const results = {
+      imported: 0,
+      failed: 0,
+      errors: [],
+      details: []
+    };
+    
+    for (const file of req.files) {
+      try {
+        // Parse the setup file
+        const fileContent = file.buffer.toString('utf-8');
+        const setupData = SetupParser.parseSetupFile(fileContent, file.originalname);
+        
+        // Add the setup to storage
+        const savedSetup = await storage.addSetup(setupData);
+        results.imported++;
+        results.details.push({
+          setupName: savedSetup.setupName,
+          car: savedSetup.car,
+          track: savedSetup.track
+        });
+      } catch (err) {
+        results.failed++;
+        results.errors.push(`${file.originalname}: ${err.message}`);
+      }
+    }
+    
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
