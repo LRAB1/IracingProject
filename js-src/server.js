@@ -49,20 +49,34 @@ app.get('/api/setups/:id', async (req, res) => {
   }
 });
 
-// Get setups by car and track
+// Get setups by car and track with optional tire type filter
 app.get('/api/setups/filter/:car/:track', async (req, res) => {
   try {
-    const setups = await storage.getSetupsByCarAndTrack(req.params.car, req.params.track);
+    const { car, track } = req.params;
+    const { tireType } = req.query;
+    const setups = await storage.getSetupsByCarAndTrack(car, track, tireType);
     res.json(setups);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Get average setup for car and track
+// Get setups by tire type
+app.get('/api/setups/tire/:tireType', async (req, res) => {
+  try {
+    const setups = await storage.getSetupsByTireType(req.params.tireType);
+    res.json(setups);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get average setup for car and track with optional tire type filter
 app.get('/api/setups/average/:car/:track', async (req, res) => {
   try {
-    const average = await storage.getAverageSetup(req.params.car, req.params.track);
+    const { car, track } = req.params;
+    const { tireType } = req.query;
+    const average = await storage.getAverageSetup(car, track, tireType);
     if (!average) {
       return res.status(404).json({ error: 'No setups found for this car and track combination' });
     }
@@ -128,7 +142,8 @@ app.post('/api/setups/import', upload.array('setupFiles', 50), async (req, res) 
         results.details.push({
           setupName: savedSetup.setupName,
           car: savedSetup.car,
-          track: savedSetup.track
+          track: savedSetup.track,
+          tireType: savedSetup.tireType
         });
       } catch (err) {
         results.failed++;

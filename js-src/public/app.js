@@ -65,8 +65,16 @@ async function saveSetup(event) {
 
 async function loadSetups() {
     try {
+        const filterSelect = document.getElementById('filter-tire-type');
+        const tireTypeFilter = filterSelect ? filterSelect.value : 'all';
+        
         const response = await fetch(`${API_BASE}/setups`);
-        const setups = await response.json();
+        let setups = await response.json();
+        
+        // Filter by tire type if not 'all'
+        if (tireTypeFilter !== 'all') {
+            setups = setups.filter(s => s.tireType === tireTypeFilter);
+        }
         
         const listContainer = document.getElementById('setups-list');
         
@@ -77,7 +85,7 @@ async function loadSetups() {
         
         listContainer.innerHTML = setups.map(setup => `
             <div class="setup-card">
-                <h4>${setup.setupName}</h4>
+                <h4>${setup.setupName} <span class="tire-badge ${setup.tireType}">${(setup.tireType || 'dry').toUpperCase()}</span></h4>
                 <p><strong>Car:</strong> ${setup.car} | <strong>Track:</strong> ${setup.track}</p>
                 <p><strong>Created:</strong> ${new Date(setup.dateCreated).toLocaleDateString()}</p>
                 <div class="setup-details">
@@ -170,6 +178,7 @@ async function deleteSetup(id) {
 async function calculateAverage() {
     const car = document.getElementById('avg-car').value;
     const track = document.getElementById('avg-track').value;
+    const tireType = document.getElementById('avg-tire-type').value;
     
     if (!car || !track) {
         alert('Please enter both car and track');
@@ -177,7 +186,12 @@ async function calculateAverage() {
     }
     
     try {
-        const response = await fetch(`${API_BASE}/setups/average/${encodeURIComponent(car)}/${encodeURIComponent(track)}`);
+        let url = `${API_BASE}/setups/average/${encodeURIComponent(car)}/${encodeURIComponent(track)}`;
+        if (tireType) {
+            url += `?tireType=${encodeURIComponent(tireType)}`;
+        }
+        
+        const response = await fetch(url);
         const result = await response.json();
         
         const resultContainer = document.getElementById('average-result');
@@ -189,7 +203,7 @@ async function calculateAverage() {
         
         resultContainer.innerHTML = `
             <div class="average-card">
-                <h3>Average Setup: ${result.setupName}</h3>
+                <h3>Average Setup: ${result.setupName} <span class="tire-badge ${result.tireType}">${(result.tireType || 'dry').toUpperCase()}</span></h3>
                 <p><strong>Car:</strong> ${result.car} | <strong>Track:</strong> ${result.track}</p>
                 <div class="setup-details">
                     <div class="detail-item">
@@ -354,7 +368,8 @@ async function importSetups() {
             if (result.details && result.details.length > 0) {
                 resultHTML += '<h4>Imported Setups:</h4><ul>';
                 result.details.forEach(detail => {
-                    resultHTML += `<li>${detail.setupName} - ${detail.car} @ ${detail.track}</li>`;
+                    const tireLabel = detail.tireType ? `<span class="tire-badge ${detail.tireType}">${detail.tireType.toUpperCase()}</span>` : '';
+                    resultHTML += `<li>${detail.setupName} ${tireLabel} - ${detail.car} @ ${detail.track}</li>`;
                 });
                 resultHTML += '</ul>';
             }

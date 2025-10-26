@@ -44,9 +44,19 @@ class SetupStorage {
     return setup.toJSON();
   }
   
-  async getSetupsByCarAndTrack(car, track) {
+  async getSetupsByCarAndTrack(car, track, tireType = null) {
     const setups = await this.loadSetups();
-    return setups.filter(s => s.car === car && s.track === track);
+    return setups.filter(s => {
+      const carMatch = s.car === car;
+      const trackMatch = s.track === track;
+      const tireMatch = tireType ? s.tireType === tireType : true;
+      return carMatch && trackMatch && tireMatch;
+    });
+  }
+  
+  async getSetupsByTireType(tireType) {
+    const setups = await this.loadSetups();
+    return setups.filter(s => s.tireType === tireType);
   }
   
   async getAllSetups() {
@@ -91,8 +101,8 @@ class SetupStorage {
     return true;
   }
   
-  async getAverageSetup(car, track) {
-    const setups = await this.getSetupsByCarAndTrack(car, track);
+  async getAverageSetup(car, track, tireType = null) {
+    const setups = await this.getSetupsByCarAndTrack(car, track, tireType);
     
     if (setups.length === 0) {
       return null;
@@ -114,8 +124,9 @@ class SetupStorage {
     const averaged = {
       car: car,
       track: track,
-      setupName: `Average of ${setups.length} setups`,
-      dateCreated: new Date().toISOString()
+      setupName: `Average of ${setups.length} ${tireType || 'all'} tire setups`,
+      dateCreated: new Date().toISOString(),
+      tireType: tireType || setups[0].tireType
     };
     
     numericFields.forEach(field => {

@@ -15,7 +15,8 @@ class SetupParser {
       const setupData = {
         setupName: fileNameWithoutExt,
         car: '',
-        track: ''
+        track: '',
+        tireType: 'dry' // Default to dry, will be detected from file content
       };
       
       let currentSection = '';
@@ -67,13 +68,29 @@ class SetupParser {
     // Map common iRacing setup keys to our model
     // Note: iRacing uses different naming conventions, so we map them
     
+    // Tire type detection - iRacing uses compound name for tire type
+    if (key === 'tirecompound' || key === 'compound' || key.includes('tirecompound')) {
+      const valueLower = value.toLowerCase();
+      // Check for wet tire indicators
+      if (valueLower.includes('wet') || valueLower.includes('rain') || valueLower.includes('w')) {
+        setupData.tireType = 'wet';
+      } else {
+        setupData.tireType = 'dry';
+      }
+    }
+    
     // General information
-    if (key === 'carpath' || key === 'car') {
+    else if (key === 'carpath' || key === 'car') {
       setupData.car = this.extractCarName(value);
     } else if (key === 'trackname' || key === 'track') {
       setupData.track = this.extractTrackName(value);
     } else if (key === 'setupname' || key === 'name') {
       setupData.setupName = value;
+      // Also check setup name for wet/rain keywords
+      const nameLower = value.toLowerCase();
+      if (nameLower.includes('wet') || nameLower.includes('rain')) {
+        setupData.tireType = 'wet';
+      }
     }
     
     // Fuel

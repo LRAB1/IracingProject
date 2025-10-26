@@ -37,6 +37,13 @@
                         <label for="setupName">Setup Name:</label>
                         <input type="text" id="setupName" name="setupName" required>
                     </div>
+                    <div class="form-group">
+                        <label for="tireType">Tire Type:</label>
+                        <select id="tireType" name="tireType" required>
+                            <option value="dry">Dry</option>
+                            <option value="wet">Wet</option>
+                        </select>
+                    </div>
                 </div>
                 
                 <div class="form-section">
@@ -182,6 +189,16 @@
         <!-- List Setups View -->
         <div id="list-view" class="view">
             <h2>Saved Setups</h2>
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="filter-tire-type">Filter by Tire Type:</label>
+                    <select id="filter-tire-type" onchange="loadSetups()">
+                        <option value="all">All</option>
+                        <option value="dry">Dry</option>
+                        <option value="wet">Wet</option>
+                    </select>
+                </div>
+            </div>
             <div id="setups-list"></div>
         </div>
         
@@ -196,6 +213,14 @@
                 <div class="form-group">
                     <label for="avg-track">Track:</label>
                     <input type="text" id="avg-track" name="avg-track">
+                </div>
+                <div class="form-group">
+                    <label for="avg-tire-type">Tire Type:</label>
+                    <select id="avg-tire-type" name="avg-tire-type">
+                        <option value="">All</option>
+                        <option value="dry">Dry</option>
+                        <option value="wet">Wet</option>
+                    </select>
                 </div>
                 <button onclick="calculateAverage()" class="btn-primary">Calculate Average</button>
             </div>
