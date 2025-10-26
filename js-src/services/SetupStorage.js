@@ -9,11 +9,7 @@ class SetupStorage {
   }
   
   async ensureDataDir() {
-    try {
-      await fs.mkdir(this.dataDir, { recursive: true });
-    } catch (err) {
-      if (err.code !== 'EEXIST') throw err;
-    }
+    await fs.mkdir(this.dataDir, { recursive: true });
   }
   
   async loadSetups() {
