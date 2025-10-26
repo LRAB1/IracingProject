@@ -111,19 +111,19 @@ async function loadSetups() {
                     </div>
                     <div class="detail-item">
                         <strong>LF Camber</strong>
-                        <span>${setup.LF_Camber} mm</span>
+                        <span>${setup.LF_Camber}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>RF Camber</strong>
-                        <span>${setup.RF_Camber} mm</span>
+                        <span>${setup.RF_Camber}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>RR Camber</strong>
-                        <span>${setup.RR_Camber} mm</span>
+                        <span>${setup.RR_Camber}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>LR Camber</strong>
-                        <span>${setup.LR_Camber} mm</span>
+                        <span>${setup.LR_Camber}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>Rear Toe</strong>
@@ -222,7 +222,7 @@ async function calculateAverage() {
                     </div>
                     <div class="detail-item">
                         <strong>LF Camber</strong>
-                        <span>${result.LF_Camber.toFixed(2)} mm</span>
+                        <span>${result.LF_Camber.toFixed(2)}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>RF Pressure</strong>
@@ -242,7 +242,7 @@ async function calculateAverage() {
                     </div>
                     <div class="detail-item">
                         <strong>RF Camber</strong>
-                        <span>${result.RF_Camber.toFixed(2)} mm</span>
+                        <span>${result.RF_Camber.toFixed(2)}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>RR Pressure</strong>
@@ -262,7 +262,7 @@ async function calculateAverage() {
                     </div>
                     <div class="detail-item">
                         <strong>RR Camber</strong>
-                        <span>${result.RR_Camber.toFixed(2)} mm</span>
+                        <span>${result.RR_Camber.toFixed(2)}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>LR Pressure</strong>
@@ -282,7 +282,7 @@ async function calculateAverage() {
                     </div>
                     <div class="detail-item">
                         <strong>LR Camber</strong>
-                        <span>${result.LR_Camber.toFixed(2)} mm</span>
+                        <span>${result.LR_Camber.toFixed(2)}°</span>
                     </div>
                     <div class="detail-item">
                         <strong>Rear Toe</strong>
