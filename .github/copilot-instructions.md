@@ -53,8 +53,10 @@ Copy `.env.sample` to `.env` and configure before running.
 
 ## Database Schema
 The application uses two databases:
-- `php` - Main application database (user accounts, sessions)
+- `php` - Main application database (user accounts and related data)
 - `cars` - Car setup data and track information
+
+Note: User sessions are managed via PHP's native session handling (session_start()), not stored in the database.
 
 ## Coding Standards
 - Use PHP opening tags: `<?php`
