@@ -4,3 +4,6 @@
 /db
 /example.com.key
 /example.com.pem
+/node_modules
+/package-lock.json
+/data
