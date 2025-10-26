@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iRacing Setup Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>iRacing Setup Manager</h1>
+        </header>
+        
+        <nav>
+            <button onclick="showView('add')" class="nav-btn">Add Setup</button>
+            <button onclick="showView('list')" class="nav-btn">View Setups</button>
+            <button onclick="showView('average')" class="nav-btn">Average Setups</button>
+        </nav>
+        
+        <!-- Add Setup View -->
+        <div id="add-view" class="view active">
+            <h2>Add New Setup</h2>
+            <form id="setup-form">
+                <div class="form-section">
+                    <h3>General Information</h3>
+                    <div class="form-group">
+                        <label for="car">Car:</label>
+                        <input type="text" id="car" name="car" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="track">Track:</label>
+                        <input type="text" id="track" name="track" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="setupName">Setup Name:</label>
+                        <input type="text" id="setupName" name="setupName" required>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>General Setup</h3>
+                    <div class="form-group">
+                        <label for="fuelLevel">Fuel Level (liters):</label>
+                        <input type="number" step="0.1" id="fuelLevel" name="fuelLevel" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="frontToe">Front Toe (mm):</label>
+                        <input type="number" step="0.1" id="frontToe" name="frontToe" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="frontARB">Front ARB (-1=soft, 0=med, 1=hard):</label>
+                        <input type="number" id="frontARB" name="frontARB" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rearToe">Rear Toe (mm):</label>
+                        <input type="number" step="0.1" id="rearToe" name="rearToe" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="rearARB">Rear ARB (-1=soft, 0=med, 1=hard):</label>
+                        <input type="number" id="rearARB" name="rearARB" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Left Front</h3>
+                    <div class="form-group">
+                        <label for="LF_Pressure">Pressure (PSI):</label>
+                        <input type="number" step="0.1" id="LF_Pressure" name="LF_Pressure" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LF_SpringPerchOffset">Spring Perch Offset (mm):</label>
+                        <input type="number" step="0.1" id="LF_SpringPerchOffset" name="LF_SpringPerchOffset" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LF_BumpStiffness">Bump Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="LF_BumpStiffness" name="LF_BumpStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LF_ReboundStiffness">Rebound Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="LF_ReboundStiffness" name="LF_ReboundStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LF_Camber">Camber (degrees):</label>
+                        <input type="number" step="0.1" id="LF_Camber" name="LF_Camber" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Right Front</h3>
+                    <div class="form-group">
+                        <label for="RF_Pressure">Pressure (PSI):</label>
+                        <input type="number" step="0.1" id="RF_Pressure" name="RF_Pressure" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RF_SpringPerch">Spring Perch (mm):</label>
+                        <input type="number" step="0.1" id="RF_SpringPerch" name="RF_SpringPerch" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RF_BumpStiffness">Bump Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="RF_BumpStiffness" name="RF_BumpStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RF_ReboundStiffness">Rebound Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="RF_ReboundStiffness" name="RF_ReboundStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RF_Camber">Camber (degrees):</label>
+                        <input type="number" step="0.1" id="RF_Camber" name="RF_Camber" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Right Rear</h3>
+                    <div class="form-group">
+                        <label for="RR_Pressure">Pressure (PSI):</label>
+                        <input type="number" step="0.1" id="RR_Pressure" name="RR_Pressure" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RR_SpringPerch">Spring Perch (mm):</label>
+                        <input type="number" step="0.1" id="RR_SpringPerch" name="RR_SpringPerch" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RR_BumpStiffness">Bump Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="RR_BumpStiffness" name="RR_BumpStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RR_ReboundStiffness">Rebound Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="RR_ReboundStiffness" name="RR_ReboundStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="RR_Camber">Camber (degrees):</label>
+                        <input type="number" step="0.1" id="RR_Camber" name="RR_Camber" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Left Rear</h3>
+                    <div class="form-group">
+                        <label for="LR_Pressure">Pressure (PSI):</label>
+                        <input type="number" step="0.1" id="LR_Pressure" name="LR_Pressure" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LR_SpringPerch">Spring Perch (mm):</label>
+                        <input type="number" step="0.1" id="LR_SpringPerch" name="LR_SpringPerch" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LR_BumpStiffness">Bump Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="LR_BumpStiffness" name="LR_BumpStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LR_ReboundStiffness">Rebound Stiffness (clicks):</label>
+                        <input type="number" step="0.1" id="LR_ReboundStiffness" name="LR_ReboundStiffness" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="LR_Camber">Camber (degrees):</label>
+                        <input type="number" step="0.1" id="LR_Camber" name="LR_Camber" value="0">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary">Save Setup</button>
+            </form>
+            <div id="add-message" class="message"></div>
+        </div>
+        
+        <!-- List Setups View -->
+        <div id="list-view" class="view">
+            <h2>Saved Setups</h2>
+            <div id="setups-list"></div>
+        </div>
+        
+        <!-- Average Setup View -->
+        <div id="average-view" class="view">
+            <h2>Calculate Average Setup</h2>
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="avg-car">Car:</label>
+                    <input type="text" id="avg-car" name="avg-car">
+                </div>
+                <div class="form-group">
+                    <label for="avg-track">Track:</label>
+                    <input type="text" id="avg-track" name="avg-track">
+                </div>
+                <button onclick="calculateAverage()" class="btn-primary">Calculate Average</button>
+            </div>
+            <div id="average-result"></div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
