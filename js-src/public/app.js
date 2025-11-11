@@ -65,8 +65,16 @@ async function saveSetup(event) {
 
 async function loadSetups() {
     try {
+        const filterSelect = document.getElementById('filter-tire-type');
+        const tireTypeFilter = filterSelect ? filterSelect.value : 'all';
+        
         const response = await fetch(`${API_BASE}/setups`);
-        const setups = await response.json();
+        let setups = await response.json();
+        
+        // Filter by tire type if not 'all'
+        if (tireTypeFilter !== 'all') {
+            setups = setups.filter(s => s.tireType === tireTypeFilter);
+        }
         
         const listContainer = document.getElementById('setups-list');
         
@@ -77,7 +85,7 @@ async function loadSetups() {
         
         listContainer.innerHTML = setups.map(setup => `
             <div class="setup-card">
-                <h4>${setup.setupName}</h4>
+                <h4>${setup.setupName} <span class="tire-badge ${setup.tireType}">${(setup.tireType || 'dry').toUpperCase()}</span></h4>
                 <p><strong>Car:</strong> ${setup.car} | <strong>Track:</strong> ${setup.track}</p>
                 <p><strong>Created:</strong> ${new Date(setup.dateCreated).toLocaleDateString()}</p>
                 <div class="setup-details">
@@ -170,6 +178,7 @@ async function deleteSetup(id) {
 async function calculateAverage() {
     const car = document.getElementById('avg-car').value;
     const track = document.getElementById('avg-track').value;
+    const tireType = document.getElementById('avg-tire-type').value;
     
     if (!car || !track) {
         alert('Please enter both car and track');
@@ -177,7 +186,12 @@ async function calculateAverage() {
     }
     
     try {
-        const response = await fetch(`${API_BASE}/setups/average/${encodeURIComponent(car)}/${encodeURIComponent(track)}`);
+        let url = `${API_BASE}/setups/average/${encodeURIComponent(car)}/${encodeURIComponent(track)}`;
+        if (tireType) {
+            url += `?tireType=${encodeURIComponent(tireType)}`;
+        }
+        
+        const response = await fetch(url);
         const result = await response.json();
         
         const resultContainer = document.getElementById('average-result');
@@ -189,7 +203,7 @@ async function calculateAverage() {
         
         resultContainer.innerHTML = `
             <div class="average-card">
-                <h3>Average Setup: ${result.setupName}</h3>
+                <h3>Average Setup: ${result.setupName} <span class="tire-badge ${result.tireType}">${(result.tireType || 'dry').toUpperCase()}</span></h3>
                 <p><strong>Car:</strong> ${result.car} | <strong>Track:</strong> ${result.track}</p>
                 <div class="setup-details">
                     <div class="detail-item">
@@ -298,6 +312,82 @@ async function calculateAverage() {
     } catch (err) {
         const resultContainer = document.getElementById('average-result');
         resultContainer.innerHTML = `<p class="error">Error calculating average: ${err.message}</p>`;
+    }
+}
+
+async function importSetups() {
+    const fileInput = document.getElementById('setup-files');
+    const files = fileInput.files;
+    
+    if (files.length === 0) {
+        showMessage('import-message', 'Please select at least one setup file', true);
+        return;
+    }
+    
+    const confirmation = confirm(`You have selected ${files.length} file(s) to import. Do you want to proceed?`);
+    if (!confirmation) {
+        return;
+    }
+    
+    const resultsContainer = document.getElementById('import-results');
+    resultsContainer.innerHTML = '<p>Processing files...</p>';
+    
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+        formData.append('setupFiles', files[i]);
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE}/setups/import`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            const successCount = result.imported || 0;
+            const failCount = result.failed || 0;
+            
+            let resultHTML = `<div class="import-summary">
+                <h3>Import Complete</h3>
+                <p><strong>Successfully imported:</strong> ${successCount} setup(s)</p>`;
+            
+            if (failCount > 0) {
+                resultHTML += `<p><strong>Failed to import:</strong> ${failCount} file(s)</p>`;
+            }
+            
+            if (result.errors && result.errors.length > 0) {
+                resultHTML += '<h4>Errors:</h4><ul>';
+                result.errors.forEach(error => {
+                    resultHTML += `<li>${error}</li>`;
+                });
+                resultHTML += '</ul>';
+            }
+            
+            if (result.details && result.details.length > 0) {
+                resultHTML += '<h4>Imported Setups:</h4><ul>';
+                result.details.forEach(detail => {
+                    const tireLabel = detail.tireType ? `<span class="tire-badge ${detail.tireType}">${detail.tireType.toUpperCase()}</span>` : '';
+                    resultHTML += `<li>${detail.setupName} ${tireLabel} - ${detail.car} @ ${detail.track}</li>`;
+                });
+                resultHTML += '</ul>';
+            }
+            
+            resultHTML += '</div>';
+            resultsContainer.innerHTML = resultHTML;
+            
+            showMessage('import-message', `Import completed: ${successCount} successful, ${failCount} failed`, failCount > 0);
+            
+            // Clear the file input
+            fileInput.value = '';
+        } else {
+            resultsContainer.innerHTML = `<p class="error">Import failed: ${result.error}</p>`;
+            showMessage('import-message', `Error: ${result.error}`, true);
+        }
+    } catch (err) {
+        resultsContainer.innerHTML = `<p class="error">Error during import: ${err.message}</p>`;
+        showMessage('import-message', `Error: ${err.message}`, true);
     }
 }
 

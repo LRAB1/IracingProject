@@ -5,6 +5,7 @@ class Setup {
     this.track = data.track || '';
     this.setupName = data.setupName || '';
     this.dateCreated = data.dateCreated || new Date().toISOString();
+    this.tireType = data.tireType || 'dry'; // 'dry' or 'wet'
     
     // Setup parameters
     this.fuelLevel = parseFloat(data.fuelLevel) || 0;
@@ -63,6 +64,7 @@ class Setup {
       track: this.track,
       setupName: this.setupName,
       dateCreated: this.dateCreated,
+      tireType: this.tireType,
       fuelLevel: this.fuelLevel,
       frontToe: this.frontToe,
       frontARB: this.frontARB,

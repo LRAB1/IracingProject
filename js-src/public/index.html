@@ -14,6 +14,7 @@
         
         <nav>
             <button onclick="showView('add')" class="nav-btn">Add Setup</button>
+            <button onclick="showView('import')" class="nav-btn">Import Setups</button>
             <button onclick="showView('list')" class="nav-btn">View Setups</button>
             <button onclick="showView('average')" class="nav-btn">Average Setups</button>
         </nav>
@@ -35,6 +36,13 @@
                     <div class="form-group">
                         <label for="setupName">Setup Name:</label>
                         <input type="text" id="setupName" name="setupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tireType">Tire Type:</label>
+                        <select id="tireType" name="tireType" required>
+                            <option value="dry">Dry</option>
+                            <option value="wet">Wet</option>
+                        </select>
                     </div>
                 </div>
                 
@@ -163,9 +171,34 @@
             <div id="add-message" class="message"></div>
         </div>
         
+        <!-- Import Setups View -->
+        <div id="import-view" class="view">
+            <h2>Import Setups from Files</h2>
+            <div class="form-section">
+                <p>Select iRacing setup files (.sto) to import. The system will ask for confirmation before saving.</p>
+                <div class="form-group">
+                    <label for="setup-files">Choose Setup Files:</label>
+                    <input type="file" id="setup-files" accept=".sto" multiple>
+                </div>
+                <button onclick="importSetups()" class="btn-primary">Import Selected Files</button>
+            </div>
+            <div id="import-message" class="message"></div>
+            <div id="import-results"></div>
+        </div>
+        
         <!-- List Setups View -->
         <div id="list-view" class="view">
             <h2>Saved Setups</h2>
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="filter-tire-type">Filter by Tire Type:</label>
+                    <select id="filter-tire-type" onchange="loadSetups()">
+                        <option value="all">All</option>
+                        <option value="dry">Dry</option>
+                        <option value="wet">Wet</option>
+                    </select>
+                </div>
+            </div>
             <div id="setups-list"></div>
         </div>
         
@@ -180,6 +213,14 @@
                 <div class="form-group">
                     <label for="avg-track">Track:</label>
                     <input type="text" id="avg-track" name="avg-track">
+                </div>
+                <div class="form-group">
+                    <label for="avg-tire-type">Tire Type:</label>
+                    <select id="avg-tire-type" name="avg-tire-type">
+                        <option value="">All</option>
+                        <option value="dry">Dry</option>
+                        <option value="wet">Wet</option>
+                    </select>
                 </div>
                 <button onclick="calculateAverage()" class="btn-primary">Calculate Average</button>
             </div>

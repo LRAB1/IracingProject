@@ -5,6 +5,7 @@ A JavaScript-based web application for managing iRacing car setups. This applica
 ## Features
 
 - **Add Setups**: Create and save detailed car setups with all parameters
+- **Import Setups**: Import iRacing setup files (.sto format) from your computer
 - **View Setups**: Browse all saved setups with detailed information
 - **Average Setups**: Automatically calculate average values when multiple setups exist for the same car and track combination
 - **User Confirmation**: Prompts for user confirmation before saving changes
@@ -47,6 +48,16 @@ The application will be available at `http://localhost:3000`
 4. Click "Save Setup"
 5. Confirm when prompted
 
+### Importing Setups
+
+1. Click "Import Setups" in the navigation
+2. Click "Choose Setup Files" and select one or more iRacing setup files (.sto format)
+3. Click "Import Selected Files"
+4. Confirm when prompted
+5. The system will parse and import the setup files, showing results for each file
+
+**Note**: iRacing setup files are typically found in your Documents folder under `Documents\iRacing\setups\[car_name]\`. The importer supports the standard iRacing .sto file format and will automatically extract car and track information.
+
 ### Viewing Setups
 
 1. Click "View Setups" in the navigation
@@ -68,6 +79,7 @@ The application will be available at `http://localhost:3000`
 - `GET /api/setups/filter/:car/:track` - Get setups for a specific car and track
 - `GET /api/setups/average/:car/:track` - Get average setup for a car and track
 - `POST /api/setups` - Create a new setup
+- `POST /api/setups/import` - Import setups from .sto files (multipart/form-data)
 - `PUT /api/setups/:id` - Update a setup
 - `DELETE /api/setups/:id` - Delete a setup
 
