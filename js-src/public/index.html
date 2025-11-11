@@ -27,7 +27,107 @@
                     <h3>General Information</h3>
                     <div class="form-group">
                         <label for="car">Car:</label>
-                        <input type="text" id="car" name="car" required>
+                        <select id="car" name="car" required>
+                            <option value="">-- Select a Car --</option>
+                            <optgroup label="Formula Cars">
+                                <option value="Dallara iR-01">Dallara iR-01</option>
+                                <option value="Dallara IR-18">Dallara IR-18</option>
+                                <option value="Formula Vee">Formula Vee</option>
+                                <option value="Ray FF1600">Ray FF1600</option>
+                                <option value="Super Formula Lights">Super Formula Lights</option>
+                                <option value="Super Formula SF23">Super Formula SF23</option>
+                            </optgroup>
+                            <optgroup label="Sports Cars">
+                                <option value="Mazda MX-5">Mazda MX-5 Cup</option>
+                                <option value="Global Mazda MX-5">Global Mazda MX-5</option>
+                                <option value="Porsche 718 Cayman GT4 Clubsport MR">Porsche 718 Cayman GT4 Clubsport MR</option>
+                                <option value="Lotus Elise">Lotus Elise</option>
+                                <option value="Lotus Evora GTC">Lotus Evora GTC</option>
+                                <option value="Pontiac Solstice">Pontiac Solstice</option>
+                                <option value="Radical SR8">Radical SR8</option>
+                                <option value="Radical SR10">Radical SR10</option>
+                            </optgroup>
+                            <optgroup label="GT3 Cars">
+                                <option value="Audi R8 LMS GT3">Audi R8 LMS GT3</option>
+                                <option value="BMW M4 GT3">BMW M4 GT3</option>
+                                <option value="Ferrari 296 GT3">Ferrari 296 GT3</option>
+                                <option value="Ferrari 488 GT3 Evo">Ferrari 488 GT3 Evo</option>
+                                <option value="Ford Mustang GT3">Ford Mustang GT3</option>
+                                <option value="Lamborghini Huracan GT3 EVO">Lamborghini Huracan GT3 EVO</option>
+                                <option value="McLaren 720S GT3">McLaren 720S GT3</option>
+                                <option value="Mercedes-AMG GT3">Mercedes-AMG GT3</option>
+                                <option value="Porsche 911 GT3 R">Porsche 911 GT3 R (992)</option>
+                            </optgroup>
+                            <optgroup label="GT4 Cars">
+                                <option value="Aston Martin Vantage GT4">Aston Martin Vantage GT4</option>
+                                <option value="BMW M4 GT4">BMW M4 GT4</option>
+                                <option value="McLaren 570S GT4">McLaren 570S GT4</option>
+                                <option value="Mercedes-AMG GT4">Mercedes-AMG GT4</option>
+                                <option value="Porsche 718 Cayman GT4 RS">Porsche 718 Cayman GT4 RS</option>
+                            </optgroup>
+                            <optgroup label="LMP/Prototype">
+                                <option value="Acura ARX-06 GTP">Acura ARX-06 GTP</option>
+                                <option value="BMW M Hybrid V8">BMW M Hybrid V8</option>
+                                <option value="Cadillac V-Series.R GTP">Cadillac V-Series.R GTP</option>
+                                <option value="Dallara P217">Dallara P217</option>
+                                <option value="Ligier JS P320">Ligier JS P320</option>
+                                <option value="Porsche 963 GTP">Porsche 963 GTP</option>
+                            </optgroup>
+                            <optgroup label="NASCAR - Cup">
+                                <option value="NASCAR Cup Chevrolet Camaro ZL1">NASCAR Cup Chevrolet Camaro ZL1</option>
+                                <option value="NASCAR Cup Ford Mustang">NASCAR Cup Ford Mustang</option>
+                                <option value="NASCAR Cup Toyota Camry">NASCAR Cup Toyota Camry</option>
+                            </optgroup>
+                            <optgroup label="NASCAR - Xfinity">
+                                <option value="NASCAR Xfinity Chevrolet Camaro">NASCAR Xfinity Chevrolet Camaro</option>
+                                <option value="NASCAR Xfinity Ford Mustang">NASCAR Xfinity Ford Mustang</option>
+                                <option value="NASCAR Xfinity Toyota Supra">NASCAR Xfinity Toyota Supra</option>
+                            </optgroup>
+                            <optgroup label="NASCAR - Truck">
+                                <option value="NASCAR Truck Chevrolet Silverado">NASCAR Truck Chevrolet Silverado</option>
+                                <option value="NASCAR Truck Ford F-150">NASCAR Truck Ford F-150</option>
+                                <option value="NASCAR Truck Toyota Tundra">NASCAR Truck Toyota Tundra</option>
+                            </optgroup>
+                            <optgroup label="Touring Cars">
+                                <option value="Audi RS 3 LMS">Audi RS 3 LMS</option>
+                                <option value="BMW M2 CS Racing">BMW M2 CS Racing</option>
+                                <option value="Hyundai Elantra N TC">Hyundai Elantra N TC</option>
+                                <option value="Hyundai Veloster N TC">Hyundai Veloster N TC</option>
+                                <option value="Volkswagen Jetta TDI">Volkswagen Jetta TDI</option>
+                            </optgroup>
+                            <optgroup label="Historic/Vintage">
+                                <option value="Ford GT40 Mk IV">Ford GT40 Mk IV</option>
+                                <option value="Lotus 49">Lotus 49</option>
+                                <option value="Lotus 79">Lotus 79</option>
+                                <option value="McLaren MP4-30">McLaren MP4-30</option>
+                                <option value="Mercedes-Benz W12">Mercedes-Benz W12</option>
+                                <option value="Nissan GTP ZX-T">Nissan GTP ZX-T</option>
+                                <option value="Porsche 911 RSR">Porsche 911 RSR (Historic)</option>
+                                <option value="Williams-Toyota FW31">Williams-Toyota FW31</option>
+                            </optgroup>
+                            <optgroup label="Dirt - Sprint Cars">
+                                <option value="Dirt Sprint Car">410 Sprint Car</option>
+                                <option value="Dirt 360 Sprint Car">360 Sprint Car</option>
+                                <option value="Dirt Winged 410 Sprint Car">Winged 410 Sprint Car</option>
+                            </optgroup>
+                            <optgroup label="Dirt - Midgets/Micros">
+                                <option value="Dirt Midget">Dirt Midget</option>
+                                <option value="Dirt Micro Sprint">Micro Sprint</option>
+                            </optgroup>
+                            <optgroup label="Dirt - Late Models">
+                                <option value="Dirt Late Model">Dirt Late Model</option>
+                                <option value="Dirt Street Stock">Dirt Street Stock</option>
+                            </optgroup>
+                            <optgroup label="Dirt - Modifieds">
+                                <option value="Dirt Big Block Modified">Big Block Modified</option>
+                                <option value="Dirt UMP Modified">UMP Modified</option>
+                            </optgroup>
+                            <optgroup label="Rally">
+                                <option value="Ford Fiesta RS WRC">Ford Fiesta RS WRC</option>
+                                <option value="Subaru WRX STI">Subaru WRX STI</option>
+                                <option value="VW Beetle GRC">VW Beetle GRC</option>
+                            </optgroup>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="track">Track:</label>
@@ -208,7 +308,107 @@
             <div class="form-section">
                 <div class="form-group">
                     <label for="avg-car">Car:</label>
-                    <input type="text" id="avg-car" name="avg-car">
+                    <select id="avg-car" name="avg-car">
+                        <option value="">-- Select a Car --</option>
+                        <optgroup label="Formula Cars">
+                            <option value="Dallara iR-01">Dallara iR-01</option>
+                            <option value="Dallara IR-18">Dallara IR-18</option>
+                            <option value="Formula Vee">Formula Vee</option>
+                            <option value="Ray FF1600">Ray FF1600</option>
+                            <option value="Super Formula Lights">Super Formula Lights</option>
+                            <option value="Super Formula SF23">Super Formula SF23</option>
+                        </optgroup>
+                        <optgroup label="Sports Cars">
+                            <option value="Mazda MX-5">Mazda MX-5 Cup</option>
+                            <option value="Global Mazda MX-5">Global Mazda MX-5</option>
+                            <option value="Porsche 718 Cayman GT4 Clubsport MR">Porsche 718 Cayman GT4 Clubsport MR</option>
+                            <option value="Lotus Elise">Lotus Elise</option>
+                            <option value="Lotus Evora GTC">Lotus Evora GTC</option>
+                            <option value="Pontiac Solstice">Pontiac Solstice</option>
+                            <option value="Radical SR8">Radical SR8</option>
+                            <option value="Radical SR10">Radical SR10</option>
+                        </optgroup>
+                        <optgroup label="GT3 Cars">
+                            <option value="Audi R8 LMS GT3">Audi R8 LMS GT3</option>
+                            <option value="BMW M4 GT3">BMW M4 GT3</option>
+                            <option value="Ferrari 296 GT3">Ferrari 296 GT3</option>
+                            <option value="Ferrari 488 GT3 Evo">Ferrari 488 GT3 Evo</option>
+                            <option value="Ford Mustang GT3">Ford Mustang GT3</option>
+                            <option value="Lamborghini Huracan GT3 EVO">Lamborghini Huracan GT3 EVO</option>
+                            <option value="McLaren 720S GT3">McLaren 720S GT3</option>
+                            <option value="Mercedes-AMG GT3">Mercedes-AMG GT3</option>
+                            <option value="Porsche 911 GT3 R">Porsche 911 GT3 R (992)</option>
+                        </optgroup>
+                        <optgroup label="GT4 Cars">
+                            <option value="Aston Martin Vantage GT4">Aston Martin Vantage GT4</option>
+                            <option value="BMW M4 GT4">BMW M4 GT4</option>
+                            <option value="McLaren 570S GT4">McLaren 570S GT4</option>
+                            <option value="Mercedes-AMG GT4">Mercedes-AMG GT4</option>
+                            <option value="Porsche 718 Cayman GT4 RS">Porsche 718 Cayman GT4 RS</option>
+                        </optgroup>
+                        <optgroup label="LMP/Prototype">
+                            <option value="Acura ARX-06 GTP">Acura ARX-06 GTP</option>
+                            <option value="BMW M Hybrid V8">BMW M Hybrid V8</option>
+                            <option value="Cadillac V-Series.R GTP">Cadillac V-Series.R GTP</option>
+                            <option value="Dallara P217">Dallara P217</option>
+                            <option value="Ligier JS P320">Ligier JS P320</option>
+                            <option value="Porsche 963 GTP">Porsche 963 GTP</option>
+                        </optgroup>
+                        <optgroup label="NASCAR - Cup">
+                            <option value="NASCAR Cup Chevrolet Camaro ZL1">NASCAR Cup Chevrolet Camaro ZL1</option>
+                            <option value="NASCAR Cup Ford Mustang">NASCAR Cup Ford Mustang</option>
+                            <option value="NASCAR Cup Toyota Camry">NASCAR Cup Toyota Camry</option>
+                        </optgroup>
+                        <optgroup label="NASCAR - Xfinity">
+                            <option value="NASCAR Xfinity Chevrolet Camaro">NASCAR Xfinity Chevrolet Camaro</option>
+                            <option value="NASCAR Xfinity Ford Mustang">NASCAR Xfinity Ford Mustang</option>
+                            <option value="NASCAR Xfinity Toyota Supra">NASCAR Xfinity Toyota Supra</option>
+                        </optgroup>
+                        <optgroup label="NASCAR - Truck">
+                            <option value="NASCAR Truck Chevrolet Silverado">NASCAR Truck Chevrolet Silverado</option>
+                            <option value="NASCAR Truck Ford F-150">NASCAR Truck Ford F-150</option>
+                            <option value="NASCAR Truck Toyota Tundra">NASCAR Truck Toyota Tundra</option>
+                        </optgroup>
+                        <optgroup label="Touring Cars">
+                            <option value="Audi RS 3 LMS">Audi RS 3 LMS</option>
+                            <option value="BMW M2 CS Racing">BMW M2 CS Racing</option>
+                            <option value="Hyundai Elantra N TC">Hyundai Elantra N TC</option>
+                            <option value="Hyundai Veloster N TC">Hyundai Veloster N TC</option>
+                            <option value="Volkswagen Jetta TDI">Volkswagen Jetta TDI</option>
+                        </optgroup>
+                        <optgroup label="Historic/Vintage">
+                            <option value="Ford GT40 Mk IV">Ford GT40 Mk IV</option>
+                            <option value="Lotus 49">Lotus 49</option>
+                            <option value="Lotus 79">Lotus 79</option>
+                            <option value="McLaren MP4-30">McLaren MP4-30</option>
+                            <option value="Mercedes-Benz W12">Mercedes-Benz W12</option>
+                            <option value="Nissan GTP ZX-T">Nissan GTP ZX-T</option>
+                            <option value="Porsche 911 RSR">Porsche 911 RSR (Historic)</option>
+                            <option value="Williams-Toyota FW31">Williams-Toyota FW31</option>
+                        </optgroup>
+                        <optgroup label="Dirt - Sprint Cars">
+                            <option value="Dirt Sprint Car">410 Sprint Car</option>
+                            <option value="Dirt 360 Sprint Car">360 Sprint Car</option>
+                            <option value="Dirt Winged 410 Sprint Car">Winged 410 Sprint Car</option>
+                        </optgroup>
+                        <optgroup label="Dirt - Midgets/Micros">
+                            <option value="Dirt Midget">Dirt Midget</option>
+                            <option value="Dirt Micro Sprint">Micro Sprint</option>
+                        </optgroup>
+                        <optgroup label="Dirt - Late Models">
+                            <option value="Dirt Late Model">Dirt Late Model</option>
+                            <option value="Dirt Street Stock">Dirt Street Stock</option>
+                        </optgroup>
+                        <optgroup label="Dirt - Modifieds">
+                            <option value="Dirt Big Block Modified">Big Block Modified</option>
+                            <option value="Dirt UMP Modified">UMP Modified</option>
+                        </optgroup>
+                        <optgroup label="Rally">
+                            <option value="Ford Fiesta RS WRC">Ford Fiesta RS WRC</option>
+                            <option value="Subaru WRX STI">Subaru WRX STI</option>
+                            <option value="VW Beetle GRC">VW Beetle GRC</option>
+                        </optgroup>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="avg-track">Track:</label>
